@@ -11,7 +11,7 @@ const TranslateButton = ({ setShowLanguageModal, parentClass, className, textCla
 			{
 				pageLanguage: "en",
 				includedLanguages: 'es,en',
-				layout: google.translate.TranslateElement.InlineLayout.TEXT,
+				layout: window.google.translate.TranslateElement.InlineLayout.TEXT,
 				autoDisplay: false
 			},
 			"google_translate_element"
@@ -78,9 +78,7 @@ const TranslateButton = ({ setShowLanguageModal, parentClass, className, textCla
 			event.initEvent(eventName, true, true);
 			element.dispatchEvent(event);
 		} else {
-			event = document.createEventObject();
-			event.eventType = eventName;
-			element.fireEvent('on' + event.eventType, event);
+			
 		}
 	};
 
@@ -90,7 +88,7 @@ const TranslateButton = ({ setShowLanguageModal, parentClass, className, textCla
 				window.location.reload()
 			}
 		} else {
-			document.querySelector('.goog-te-combo').value = newLang;
+			document.querySelector('.goog-te-combo')?.setAttribute('value', newLang);
 		}
 	};
 

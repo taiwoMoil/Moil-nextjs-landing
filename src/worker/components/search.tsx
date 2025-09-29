@@ -11,8 +11,8 @@ export default function SearchComponent({ lgQuery }: any) {
     location: false,
   });
   const router = useRouter();
-  const jobTitleRef = useRef(null);
-  const locationRef = useRef(null);
+  const jobTitleRef = useRef<HTMLInputElement>(null);
+  const locationRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
     let title_trim = title.trim();
@@ -67,7 +67,7 @@ export default function SearchComponent({ lgQuery }: any) {
             <input
               type="search"
               className="py-2 rounded-lg border-opacity-30 px-3 w-full bg-white border-none outline-none focus:ring-transparent focus:border-transparent"
-              onChange={e => setTitle(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
               onMouseDown={() => handleMouseDown("jobTitle")}
               onBlur={() => handleBlur("jobTitle")}
               ref={jobTitleRef}
@@ -133,7 +133,7 @@ export default function SearchComponent({ lgQuery }: any) {
                 // console.log(place);
                 setLocation(place.formatted_address)
               }}
-              onChange={(e) => setLocation(e.target?.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLocation(e.target.value)}
               onMouseDown={() => handleMouseDown("location")}
               onBlur={() => handleBlur("location")}
             // options={{

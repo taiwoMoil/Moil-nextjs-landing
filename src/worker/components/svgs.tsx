@@ -53,7 +53,7 @@ export function InterviewSvg() {
   );
 }
 
-export function InfinitySvg(props) {
+export function InfinitySvg(props: any) {
   return (
     <svg
       viewBox="0 0 85 85"

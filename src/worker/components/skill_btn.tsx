@@ -1,4 +1,4 @@
-export default function SkillsBtn(props) {
+export default function SkillsBtn(props: any) {
   return (
     <div className="px-2 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-50 skill_btn_shadow justify-start items-center gap-2 flex">
       <div className="text-neutral-700 text-[10px] sm:text-sm font-normal whitespace-nowrap">

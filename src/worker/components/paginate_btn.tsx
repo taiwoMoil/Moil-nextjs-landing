@@ -1,18 +1,26 @@
 import React from "react";
 
-function PaginationBtn({
+interface PaginationBtnProps {
+  totalPages: number;
+  currentPage: number;
+  onNextPage: () => void;
+  onPrevPage: () => void;
+  onSelectPage: (page: number) => void;
+}
+
+function PaginationBtn({  
   totalPages,
   currentPage,
   onNextPage,
   onPrevPage,
   onSelectPage,
-}) {
+}: PaginationBtnProps) {
   const pageNumbers = Array.from(
     { length: totalPages },
     (_, index) => index + 1
   );
 
-  const handleSelectChange = (event) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPage = parseInt(event.target.value, 10);
     onSelectPage(selectedPage);
   };

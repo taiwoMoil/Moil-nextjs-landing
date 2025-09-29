@@ -89,7 +89,7 @@ export default function PrivacyPage() {
   return (
    <>
 <div className="bg-[#F7F8FC]">
-      <WorkerNavigation page="" refQuery="" lgQuery="" setQueryLg={() => {}} setShowLanguageModal={() => {}} />
+      <WorkerNavigation refQuery="" lgQuery="" setQueryLg={() => {}} setShowLanguageModal={() => {}} />
       <div className="py-4 flex justify-center items-center">
         <div className="flex flex-col gap-y-6 md:max-w-[700px] lg:max-w-[750px] px-6 py-6 md:py-10">
           <Link className="w-max flex items-center gap-x-1" href="/">

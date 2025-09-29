@@ -1,8 +1,22 @@
 import React, { useState} from "react";
-import LoaderModal from "../loader_modal/loader_modal";
+import LoaderModal from "./loader_modal";
 import Autocomplete from "react-google-autocomplete";
 
-function SearchBarsOnTop({
+interface SearchBarsOnTopProps {
+  searchJob: string;
+  setSearchJob: (value: string) => void;
+  HandleCancelJobSearch: () => void;
+  searchLocation: string;
+  setSearchLocation: (value: string) => void;
+  HandleCancelLocationSearch: () => void;
+  HandleOverAllSearch: () => void;
+  OurSearchLoading: boolean;
+  AcctType: string;
+  currentPage: number;
+  setCurrentPage: (value: number) => void;
+}
+
+function SearchBarsOnTop({  
   searchJob,
   setSearchJob,
   HandleCancelJobSearch,
@@ -14,10 +28,10 @@ function SearchBarsOnTop({
   AcctType,
   currentPage,
   setCurrentPage
-}) {
+}: SearchBarsOnTopProps) {
   const [ loading, setLoading ] = useState(false);
 
-   const handleKeyPress = (event) => {
+   const handleKeyPress = (event: React.KeyboardEvent) => {
      if (event.key === "Enter") {
        // Call HandleOverAllSearch when Enter is pressed
        HandleOverAllSearch();
@@ -34,7 +48,7 @@ function SearchBarsOnTop({
             placeholder={AcctType == "client" ? "Search for a job here" : "search for an employee here"}
             value={searchJob}
             onChange={(e) => setSearchJob(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
           <label
             htmlFor="input"
@@ -118,7 +132,7 @@ function SearchBarsOnTop({
               // console.log(place);
               setSearchLocation(place.formatted_address)
             }}
-            onChange={(e) => setSearchLocation(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchLocation(e.target.value)}
             options={{
               types: ["(regions)"],
               componentRestrictions: { country: "us" },
